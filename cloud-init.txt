@@ -26,7 +26,7 @@ apt:
         =J6gs
         -----END PGP PUBLIC KEY BLOCK----- 
 packages:
-  - apt-transport-http
+  - apt-transport-https
   - ca-certificates
   - curl 
   - software-properties-common
