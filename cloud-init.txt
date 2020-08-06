@@ -40,3 +40,5 @@ runcmd:
   - curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list -o nvidia-docker.list
   - cp nvidia-docker.list /etc/apt/sources.list.d/nvidia-docker.list
   - apt update
+  - apt install -y nvidia-docker2
+  - apt pkill -SIGHUP dockerd
