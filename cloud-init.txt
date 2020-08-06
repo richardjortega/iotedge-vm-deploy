@@ -42,3 +42,5 @@ runcmd:
   - apt update
   - apt install -y nvidia-docker2
   - apt pkill -SIGHUP dockerd
+  - wget http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
+  - sh cuda_10.2.89_440.33.01_linux.run
