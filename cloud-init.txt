@@ -34,15 +34,15 @@ packages:
 
 runcmd:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  - curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add 
-  - curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable""
+ # - curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add 
+  #- curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
   - apt update
-  - sudo apt install -y nvidia-docker2
-  - sudo pkill -SIGHUP dockerd
-  - wget http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
-  - sh cuda_10.2.89_440.33.01_linux.run
-  - |
+ # - sudo apt install -y nvidia-docker2
+  #- sudo pkill -SIGHUP dockerd
+  #- wget http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
+  #- sh cuda_10.2.89_440.33.01_linux.run
+  #- |
       set -x
       (
         # Wait for docker daemon to start
