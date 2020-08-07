@@ -33,7 +33,9 @@ az group deployment create \
 ```bash
 nvidia-smi
 ```
-The output should look like this:
+ The output should look like this:
+
+```
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 440.33.01    Driver Version: 440.33.01    CUDA Version: 10.2     |
 |-------------------------------+----------------------+----------------------+
@@ -50,10 +52,16 @@ The output should look like this:
 |=============================================================================|
 |  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
+```
+
+
+
 ```bash
 sudo docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
 ```
 The output should look like this (this will pull the docker image down and run nvidia-smi in the container):
+
+```
 Unable to find image 'nvidia/cuda:9.0-base' locally
 9.0-base: Pulling from nvidia/cuda
 976a760c94fc: Pull complete
@@ -81,6 +89,9 @@ Status: Downloaded newer image for nvidia/cuda:9.0-base
 |=============================================================================|
 |  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
+```
+
+
 
 
 # Contributing
