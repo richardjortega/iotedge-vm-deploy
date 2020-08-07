@@ -91,6 +91,16 @@ Status: Downloaded newer image for nvidia/cuda:9.0-base
 +-----------------------------------------------------------------------------+
 ```
 
+##### Troubleshooting
+
+To investigate what occurred during deployment the cloud-init logs can be found in the /var/log directory.  The files to view for this installation are:
+
+cloud-init-output.log
+
+cloud-init.log
+
+cuda-installer.log
+
 
 
 
