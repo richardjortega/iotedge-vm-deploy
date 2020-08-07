@@ -2,9 +2,9 @@
 
 Detailed documentation is available on [Microsoft Docs](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-ubuntuvm?WT.mc_id=github-iotedgevmdeploy-pdecarlo)
 
-## ARM Template to deploy IoT Edge enabled VM
+## ARM Template to deploy a GPU enabled VM with IoT Edge Installed
 
-ARM template to deploy a VM with IoT Edge pre-installed (via cloud-init)
+ARM template to deploy a GPU enabled VM with IoT Edge pre-installed (via cloud-init)
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMSKeith%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json" target="_blank">
     <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" />
@@ -28,6 +28,60 @@ az group deployment create \
   --parameters authenticationType='sshPublicKey' \
   --parameters adminPasswordOrKey="$(< ~/.ssh/id_rsa.pub)"
 ```
+
+# Testing the IoT Edge installation
+```bash
+nvidia-smi
+```
+The output should look like this:
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 440.33.01    Driver Version: 440.33.01    CUDA Version: 10.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  Tesla V100-PCIE...  Off  | 00000001:00:00.0 Off |                  Off |
+| N/A   30C    P0    38W / 250W |      0MiB / 16160MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+```bash
+sudo docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
+```
+The output should look like this (this will pull the docker image down and run nvidia-smi in the container):
+Unable to find image 'nvidia/cuda:9.0-base' locally
+9.0-base: Pulling from nvidia/cuda
+976a760c94fc: Pull complete
+c58992f3c37b: Pull complete
+0ca0e5e7f12e: Pull complete
+f2a274cc00ca: Pull complete
+708a53113e13: Pull complete
+371ddc2ca87b: Pull complete
+f81888eb6932: Pull complete
+Digest: sha256:56bfa4e0b6d923bf47a71c91b4e00b62ea251a04425598d371a5807d6ac471cb
+Status: Downloaded newer image for nvidia/cuda:9.0-base
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 440.33.01    Driver Version: 440.33.01    CUDA Version: 10.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  Tesla V100-PCIE...  Off  | 00000001:00:00.0 Off |                  Off |
+| N/A   31C    P0    37W / 250W |      0MiB / 16160MiB |      4%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+
 
 # Contributing
 
