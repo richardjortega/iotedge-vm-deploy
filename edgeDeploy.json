@@ -22,8 +22,13 @@
     },
     "vmSize": {
       "type": "string",
-      //"defaultValue": "Standard_DS1_v2",
       "defaultValue": "Standard_NC6s_v3",
+      "allowedValues": [
+        "Standard_NC6s_v3",
+        "Standard_NC12s_v3",
+        "Standard_NC24rs_v3",
+        "Standard_NC24s_v3"
+      ],
       "metadata": {
         "description": "VM size"
       }
@@ -31,7 +36,6 @@
     "vmName": {
       "type": "string",
       "defaultValue": "VM Name",
-      //"defaultValue": "Standard_NC6s_v3",
       "metadata": {
         "description": "VM name"
       }
@@ -45,7 +49,13 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "[resourceGroup().location]",
+      "defaultValue": "eastus",
+      "allowedValues": [
+        "eastus",
+        "canadacentral",
+        "southcentralus",
+        "westus2"
+        ],
       "metadata": {
         "description": "Location for all resources."
       }
