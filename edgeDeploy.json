@@ -399,27 +399,6 @@
                 }
             }
         },
-//Test Start
-        {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(variables('vmName'), '/', variables('extensionName'))]",
-            "apiVersion": "[variables('apiVersion')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-            ],
-            "properties": {
-                "publisher": "Microsoft.OSTCExtensions",
-                "type": "CustomScriptForLinux",
-                "typeHandlerVersion": "1.0",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "fileUris": [],
-                    "commandToExecute": "keith = [variables.('DCS')]"
-                }
-            }
-        },
-//Test End
         "networkProfile": {
           "networkInterfaces": [{
             "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
