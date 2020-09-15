@@ -21,7 +21,7 @@ The ARM template visualized for exploration
 az deployment group create \
   --name edgeVm \
   --resource-group replace-with-rg-name \
-  --template-uri "https://aka.ms/iotedge-vm-deploy" \
+  --template-uri "https://raw.githubusercontent.com/MSKeith/iotedge-vm-deploy/master/edgeDeploy.json" \
   --parameters dnsLabelPrefix='my-edge-vm1' \
   --parameters adminUsername='azureuser' \
   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id replace-with-device-name --hub-name replace-with-hub-name -o tsv) \
