@@ -18,7 +18,7 @@ The ARM template visualized for exploration
 ## Azure CLI command to deploy IoT Edge enabled VM
 
 ```bash
-az group deployment create \
+az deployment group create \
   --name edgeVm \
   --resource-group replace-with-rg-name \
   --template-uri "https://aka.ms/iotedge-vm-deploy" \
@@ -37,7 +37,7 @@ nvidia-smi
 
 ```
 +-----------------------------------------------------------------------------+
-| NVIDIA-SMI 440.33.01    Driver Version: 440.33.01    CUDA Version: 10.2     |
+| NVIDIA-SMI 450.51.06    Driver Version: 450.51.06    CUDA Version: 11.0     |
 |-------------------------------+----------------------+----------------------+
 | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
 | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
@@ -57,24 +57,24 @@ nvidia-smi
 
 
 ```bash
-sudo docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
+sudo docker run --runtime=nvidia --rm nvidia/cuda:11.0-base nvidia-smi
 ```
 The output should look like this (this will pull the docker image down and run nvidia-smi in the container):
 
 ```
-Unable to find image 'nvidia/cuda:9.0-base' locally
-9.0-base: Pulling from nvidia/cuda
-976a760c94fc: Pull complete
-c58992f3c37b: Pull complete
-0ca0e5e7f12e: Pull complete
-f2a274cc00ca: Pull complete
-708a53113e13: Pull complete
-371ddc2ca87b: Pull complete
-f81888eb6932: Pull complete
-Digest: sha256:56bfa4e0b6d923bf47a71c91b4e00b62ea251a04425598d371a5807d6ac471cb
-Status: Downloaded newer image for nvidia/cuda:9.0-base
+Unable to find image 'nvidia/cuda:11.0-base' locally
+11.0-base: Pulling from nvidia/cuda
+54ee1f796a1e: Pull complete 
+f7bfea53ad12: Pull complete 
+46d371e02073: Pull complete 
+b66c17bbf772: Pull complete 
+3642f1a6dfb3: Pull complete 
+e5ce55b8b4b9: Pull complete 
+155bc0332b0a: Pull complete 
+Digest: sha256:774ca3d612de15213102c2dbbba55df44dc5cf9870ca2be6c6e9c627fa63d67a
+Status: Downloaded newer image for nvidia/cuda:11.0-base
 +-----------------------------------------------------------------------------+
-| NVIDIA-SMI 440.33.01    Driver Version: 440.33.01    CUDA Version: 10.2     |
+| NVIDIA-SMI 450.51.06    Driver Version: 450.51.06    CUDA Version: 11.0     |
 |-------------------------------+----------------------+----------------------+
 | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
 | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
