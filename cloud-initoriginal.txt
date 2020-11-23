@@ -46,3 +46,18 @@ runcmd:
   - wget https://developer.download.nvidia.com/compute/cuda/11.0.3/local_installers/cuda_11.0.3_450.51.06_linux.run
   - sh cuda_11.0.3_450.51.06_linux.run --silent --driver --toolkit --samples
   - echo $dcs
+  - |
+    set -x
+    (
+      # Wait for docker daemon to start
+      while [ $(ps -ef | grep -v grep | grep docker | wc -l) -le 0 ]; do 
+        sleep 3
+      done
+
+      # Prevent iotedge from starting before the device connection string is set in config.yaml
+      sudo ln -s /dev/null /etc/systemd/system/iotedge.service
+      apt install iotedge -y
+      sed -i "s#\(device_connection_string: \).*#\1\"$dcs\"#g" /etc/iotedge/config.yaml 
+      systemctl unmask iotedge
+      systemctl start iotedge
+    ) &
