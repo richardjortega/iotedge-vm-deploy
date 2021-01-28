@@ -46,3 +46,5 @@ runcmd:
   - wget https://developer.download.nvidia.com/compute/cuda/11.0.3/local_installers/cuda_11.0.3_450.51.06_linux.run
   - sh cuda_11.0.3_450.51.06_linux.run --silent --driver --toolkit --samples
   - echo $dcs
+  - wget https://raw.githubusercontent.com/MSKeith/iotedge-vm-deploy/master/ConfigureIoTEdge.sh
+  - bash ConfigureIoTEdge.sh
