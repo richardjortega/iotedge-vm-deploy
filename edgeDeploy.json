@@ -22,32 +22,12 @@
       },
       "vmSize": {
         "type": "string",
-        "defaultValue": "Standard_NC6s_v3",
-        "allowedValues": [
-          "Standard_NC6",
-          "Standard_NC12",
-          "Standard_NC24",
-          "Standard_NC24r",
-          "Standard_NC6_Promo",
-          "Standard_NC12_Promo",
-          "Standard_NC24_Promo",
-          "Standard_NC24r_Promo",
-          "Standard_NC6s_v2",
-          "Standard_NC12s_v2",
-          "Standard_NC24rs_v2",
-          "Standard_NC24s_v2",
-          "Standard_NC6s_v3",
-          "Standard_NC12s_v3",
-          "Standard_NC24rs_v3",
-          "Standard_NC24s_v3"
-        ],
         "metadata": {
           "description": "VM size"
         }
       },
       "vmName": {
         "type": "string",
-        "defaultValue": "VM Name",
         "metadata": {
           "description": "VM name"
         }
@@ -61,11 +41,8 @@
       },
       "location": {
         "type": "string",
-        "defaultValue": "eastus",
         "allowedValues": [
           "eastus",
-          "canadacentral",
-          "southcentralus",
           "westus2"
           ],
         "metadata": {
@@ -87,6 +64,13 @@
         "type": "securestring",
         "metadata": {
           "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+        }
+      },
+      "githubCloudInitURI": {
+        "type": "string",
+        "defaultValue": "https://raw.githubusercontent.com/MSKeith/iotedge-vm-deploy/newFeatures/cloud-init.txt",
+        "metadata": {
+          "description": "Describes install instructions via cloud-init file"
         }
       }
     },
